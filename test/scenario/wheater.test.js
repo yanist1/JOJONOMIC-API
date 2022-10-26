@@ -1,10 +1,10 @@
 import { assert } from "chai";
-import WheaterbitAPI from "../page/wheater.api";
+import weatherbit from "../page/wheater.api";
 import * as data from "../data/wheater.data";
 
-describe('JOJONOMIC API Automation Test Wheater', () => {
-    it('Should be able to get current wheater data based on Lat and Lon', async() => {
-        const response = await WheaterbitAPI.get_current_wheater(data.VALID_PARAMS);
+describe('JOJONOMIC API Automation Test Weather', () => {
+    it('User will be able to get current weather data based on Lat and Lon', async() => {
+        const response = await weatherbit.get_current(data.weather_params);
         let jsonData = response.data
         console.log(response.data);
         console.log(response.status);
@@ -14,14 +14,11 @@ describe('JOJONOMIC API Automation Test Wheater', () => {
 });
 
 describe('JOJONOMIC API Automation Test Forecast', () => {
-    it('Should be able to get current forecast based on postal code and hours', async() => {
-        const respone = await WheaterbitAPI.get_forecast_wheater(data.VALID_PARAMS_FORECAST);
+    it('User wil be able to get current forecast based on postal code and hours', async() => {
+        const respone = await weatherbit.get_forecast(data.forecast_params);
         let jsonData = respone.data
         console.log(jsonData.data[0].weather);
         assert.equal(respone.status, 200);
         console.log(jsonData.data[0].timestamp_utc);
-    //     assert.equal(jsonData.data[0].weather.code, '804');
-    //     assert.equal(jsonData.data[0].weather.description, 'Overcast clouds');
-    //     assert.equal(jsonData.data[0].weather.icon, 'c04d');
     })
 })
