@@ -5,7 +5,7 @@ dotenv.config()
 
 const lat = 40.730610;
 const lon = -73.935242;
-const key = process.env.key;
+const key = process.env.KEY;
 const postal_code = 28546;
 const hours = 3;
 
